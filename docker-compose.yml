@@ -1,0 +1,31 @@
+version: "3.8"
+
+services:
+  erpdb:
+    image: postgres
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
+    container_name: erpdb
+    environment:
+      - POSTGRES_DB=erp_db
+      - POSTGRES_USER=erp_user
+      - POSTGRES_PASSWORD=ERP_project
+    restart: unless-stopped
+
+  erpdjango:
+    build: .
+    container_name: erpdjango
+    # command: python manage.py runserver 0.0.0.0:8088
+    command: gunicorn erp.wsgi:application -w 2 -b :8888 --reload
+    volumes:
+      - /usr/src/app/static
+      - .:/code
+    ports:
+      - "8888:8888"
+    depends_on:
+      - erpdb
+
+networks:
+  default:
+    external:
+      name: nginx-net
