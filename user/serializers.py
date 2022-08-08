@@ -29,8 +29,3 @@ class UserSerializer(serializers.ModelSerializer):
 
         instance.save()
         return instance
-
-class GenderSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Gender
-        fields = '__all__'
