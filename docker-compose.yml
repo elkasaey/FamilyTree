@@ -7,7 +7,7 @@ services:
       - ./data/db:/var/lib/postgresql/data
     container_name: db
     environment:
-      - POSTGRES_DB=db
+      - POSTGRES_DB=FamilyTree
       - POSTGRES_USER=user
       - POSTGRES_PASSWORD=project
     restart: unless-stopped
