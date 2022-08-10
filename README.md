@@ -4,4 +4,3 @@
 ## setup
   * get clone the project
   * run docker-compose up --build -d
-  *  
