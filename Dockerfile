@@ -12,3 +12,4 @@ COPY . /code/
 
 RUN python manage.py makemigrations
 RUN Python manage.py migrate
+RUN python manage.py collectstatic 
