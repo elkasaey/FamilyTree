@@ -16,12 +16,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework_swagger.views import get_swagger_view
-
-schema_view = get_swagger_view(title='fimle tree API')
+from rest_framework.schemas import get_schema_view
+from rest_framework_swagger.renderers import SwaggerUIRenderer, OpenAPIRenderer
+schema_view = get_schema_view(title='Fimle Tree API', renderer_classes=[OpenAPIRenderer, SwaggerUIRenderer])
+# schema_view = get_swagger_view(title='fimle tree API')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('user/', include('user.urls')),
     path('relative/', include('relative.urls')),
-    path('docs/', schema_view)
+    path(r'^', schema_view)
 ]

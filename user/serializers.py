@@ -30,7 +30,6 @@ class UserSerializer(serializers.ModelSerializer):
         relative.name = validated_data.pop('name', None)
         relative.gender = validated_data.pop('gender', None)
         relative.birthdate = validated_data.pop('birthdate', None)
-        
         instance = self.Meta.model(**validated_data)
         if password is not None:
             instance.set_password(password)
