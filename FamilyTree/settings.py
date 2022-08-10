@@ -60,7 +60,9 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'corsheaders',
     'rest_framework',
-    'user'
+    'user',
+    'relative',
+    'rest_framework_swagger',
 ]
 
 MIDDLEWARE = [
@@ -94,6 +96,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'FamilyTree.wsgi.application'
 
 REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema',
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
